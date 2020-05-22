@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://skele.tscn" type="PackedScene" id=1]
+[ext_resource path="res://KinematicBody2D.gd" type="Script" id=2]
+[ext_resource path="res://skele.gd" type="Script" id=3]
+[ext_resource path="res://New Piskel-2.png.png" type="Texture" id=4]
+[ext_resource path="res://New Piskel-3.png.png" type="Texture" id=5]
+[ext_resource path="res://New Piskel (4).png" type="Texture" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 14.8483, 37.8018 )
+
+[node name="KinematicBody2D" type="KinematicBody2D"]
+position = Vector2( 67, 68 )
+script = ExtResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 193.173, 19.0452 )
+current = true
+zoom = Vector2( 0.5, 0.5 )
+smoothing_enabled = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Camera2D"]
+scroll_ignore_camera_zoom = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Camera2D/ParallaxBackground"]
+motion_scale = Vector2( 0.1, 0.1 )
+motion_mirroring = Vector2( 256, 256 )
+
+[node name="Sprite" type="Sprite" parent="Camera2D/ParallaxBackground/ParallaxLayer"]
+position = Vector2( 1197.03, -77.8669 )
+scale = Vector2( 2.51322, 2.51322 )
+texture = ExtResource( 4 )
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="Camera2D/ParallaxBackground"]
+motion_scale = Vector2( 0.1, 0.1 )
+
+[node name="Sprite" type="Sprite" parent="Camera2D/ParallaxBackground/ParallaxLayer3"]
+position = Vector2( 414.226, 81.2803 )
+scale = Vector2( 0.501485, 0.661289 )
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 4096, 1024 )
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="Camera2D/ParallaxBackground"]
+motion_scale = Vector2( 0.1, 0.1 )
+
+[node name="Sprite" type="Sprite" parent="Camera2D/ParallaxBackground/ParallaxLayer2"]
+position = Vector2( 385.984, 161.582 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 4096, 1024 )
+
+[node name="AnimatedSprite" parent="." instance=ExtResource( 1 )]
+position = Vector2( 11.0145, 55.3888 )
+scale = Vector2( 0.128468, 0.128468 )
+centered = false
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 44.8072, 88.028 )
+shape = SubResource( 1 )
