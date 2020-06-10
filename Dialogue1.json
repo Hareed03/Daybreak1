@@ -1,0 +1,5 @@
+{
+"001" : {"name":"Undead Fool", "expression": "neutral", "text": "I was once like you, an entrepid adventurer."},
+"002" : {"name":"Skeletal Man", "expression": "neutral", "text": "What do you mean like me? I dont even know where I am!"},
+"003" : {"name":"Undead Fool", "expression": "neutral", "text": "You will see, this world is corrupt. The secret to fix the damage is in Leonard's Castle. Go, now."}
+}

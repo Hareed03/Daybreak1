@@ -1,0 +1,83 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://dialog.gd" type="Script" id=1]
+[ext_resource path="res://Sprite-0002.png" type="Texture" id=2]
+[ext_resource path="res://pixelmix.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Dialogue/character sprites/ghost.png" type="Texture" id=4]
+[ext_resource path="res://addons/SMRT/beep_letter.wav" type="AudioStream" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 3 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "ghost",
+"speed": 5.0
+} ]
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 3 )
+
+[sub_resource type="Theme" id=5]
+default_font = SubResource( 4 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+dialog = [ "Hello!", "I've been sitting here for what seems like weeks....", "Glad someone finally came by", ".......", "Well. see you around. I'll just be floating here." ]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 680.0
+margin_top = 56.0
+margin_right = 968.0
+margin_bottom = 184.0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect"]
+margin_left = 96.0
+margin_top = 16.0
+margin_right = 272.0
+margin_bottom = 112.0
+theme = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Face" type="AnimatedSprite" parent="."]
+position = Vector2( 729.752, 97.7519 )
+scale = Vector2( 0.1875, 0.1875 )
+frames = SubResource( 3 )
+animation = "ghost"
+
+[node name="Label" type="Label" parent="."]
+margin_left = 704.0
+margin_top = 142.0
+margin_right = 760.0
+margin_bottom = 159.0
+theme = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+volume_db = 4.763
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.05
+
+[node name="Tween" type="Tween" parent="."]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

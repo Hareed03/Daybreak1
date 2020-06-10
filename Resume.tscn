@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://5x5_pixel.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Resume.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 26
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[node name="Resume" type="Button"]
+margin_right = 128.0
+margin_bottom = 16.0
+theme = SubResource( 2 )
+action_mode = 0
+text = "Resume"
+expand_icon = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="button_up" from="." to="." method="_on_Resume_button_up"]

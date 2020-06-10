@@ -1,0 +1,79 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://LifeBar.gd" type="Script" id=1]
+[ext_resource path="res://New Piskel-4.png.png" type="Texture" id=2]
+[ext_resource path="res://5x5_pixel.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=3]
+size = 30
+font_data = ExtResource( 3 )
+
+[sub_resource type="Theme" id=4]
+default_font = SubResource( 3 )
+
+[sub_resource type="Gradient" id=5]
+offsets = PoolRealArray( 0, 0.981884 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.171875, 0.14032, 0.14032, 1 )
+
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
+
+[sub_resource type="Gradient" id=9]
+offsets = PoolRealArray( 0, 0.373134 )
+colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=10]
+gradient = SubResource( 9 )
+
+[sub_resource type="Gradient" id=7]
+offsets = PoolRealArray( 0, 0.496269 )
+colors = PoolColorArray( 0.945801, 0.0443344, 0.0443344, 1, 0.42627, 0.141535, 0.141535, 1 )
+
+[sub_resource type="GradientTexture" id=8]
+gradient = SubResource( 7 )
+width = 600
+
+[node name="LifeBar" type="HBoxContainer"]
+margin_right = 40.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Count" type="NinePatchRect" parent="."]
+margin_bottom = 25.0
+texture = ExtResource( 2 )
+
+[node name="Number" type="Label" parent="Count"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 112.0
+margin_bottom = 40.0
+theme = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Count"]
+margin_right = 672.0
+margin_bottom = 48.0
+texture = SubResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureProgress" type="TextureProgress" parent="."]
+margin_left = 4.0
+margin_right = 604.0
+margin_bottom = 25.0
+rounded = true
+texture_under = SubResource( 10 )
+texture_progress = SubResource( 8 )
+nine_patch_stretch = true
+stretch_margin_right = 600
+stretch_margin_bottom = 25
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

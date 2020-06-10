@@ -1,0 +1,281 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://skele.tscn" type="PackedScene" id=1]
+[ext_resource path="res://KinematicBody2D.gd" type="Script" id=2]
+[ext_resource path="res://skele.gd" type="Script" id=3]
+[ext_resource path="res://Sprite-0006.png" type="Texture" id=4]
+[ext_resource path="res://Sprite-002w06.png" type="Texture" id=5]
+[ext_resource path="res://Sprite-00206.png" type="Texture" id=6]
+[ext_resource path="res://ParallaxLayer2.gd" type="Script" id=7]
+[ext_resource path="res://ParallaxBackground.gd" type="Script" id=8]
+[ext_resource path="res://New Piskel-1.png (2).png" type="Texture" id=9]
+[ext_resource path="res://Floating_Text.tscn" type="PackedScene" id=10]
+[ext_resource path="res://ProgressBar.tscn" type="PackedScene" id=11]
+[ext_resource path="res://5x5_pixel.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://Sprite-0008.png" type="Texture" id=13]
+[ext_resource path="res://ChruchTEXT.tscn" type="PackedScene" id=14]
+
+[sub_resource type="DynamicFont" id=1]
+size = 18
+font_data = ExtResource( 12 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 20.8191, 13.1274 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 28.0671, 43.445 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "platformfall"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Legs:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=7]
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite/swordhit/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 25.0909, 25.8606 )
+
+[sub_resource type="Animation" id=9]
+resource_name = "crouchmove"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=10]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=11]
+length = 1.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ]
+}
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 34.912, 59.6001 )
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 36.8972, 48.1446 )
+
+[node name="Player" type="KinematicBody2D" groups=[
+"Actors",
+"Player",
+]]
+script = ExtResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 50, -75 )
+current = true
+zoom = Vector2( 0.6, 0.6 )
+limit_left = 0
+limit_top = 0
+limit_right = 1024
+limit_bottom = 512
+limit_smoothed = true
+smoothing_enabled = true
+drag_margin_left = 1.0
+drag_margin_top = 1.0
+drag_margin_right = 1.0
+drag_margin_bottom = 1.0
+editor_draw_limits = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Camera2D"]
+scroll_ignore_camera_zoom = true
+script = ExtResource( 8 )
+
+[node name="BG" type="ParallaxLayer" parent="Camera2D/ParallaxBackground"]
+motion_scale = Vector2( 0.3, 0.3 )
+
+[node name="Sprite" type="Sprite" parent="Camera2D/ParallaxBackground/BG"]
+position = Vector2( 890.608, 258.335 )
+scale = Vector2( 0.587129, 0.587129 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 12288, 1024 )
+
+[node name="trees" type="ParallaxLayer" parent="Camera2D/ParallaxBackground"]
+z_index = 1
+motion_scale = Vector2( 0.4, 0.4 )
+
+[node name="Sprite" type="Sprite" parent="Camera2D/ParallaxBackground/trees"]
+position = Vector2( 339.433, 455.688 )
+scale = Vector2( 0.440532, 0.470814 )
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 15360, 1024 )
+
+[node name="clouds" type="ParallaxLayer" parent="Camera2D/ParallaxBackground"]
+motion_scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="Camera2D/ParallaxBackground/clouds"]
+position = Vector2( -130.314, 506.896 )
+scale = Vector2( 0.433331, 0.403594 )
+z_index = 1
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 15360, 1024 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+layer = 4
+
+[node name="Sprite" type="Sprite" parent="Camera2D/CanvasLayer"]
+position = Vector2( 218.703, 56.2407 )
+scale = Vector2( 0.318483, 0.318483 )
+texture = ExtResource( 13 )
+
+[node name="ProgressBar" parent="Camera2D/CanvasLayer" instance=ExtResource( 11 )]
+anchor_left = 0.000976563
+anchor_top = -0.387
+anchor_right = 0.500977
+anchor_bottom = 0.104
+margin_left = 31.0
+margin_top = 238.144
+margin_right = -104.0
+margin_bottom = -5.248
+
+[node name="Tween" type="Tween" parent="Camera2D/CanvasLayer/ProgressBar"]
+
+[node name="Health" type="Label" parent="Camera2D/CanvasLayer"]
+margin_left = 26.2927
+margin_top = 52.129
+margin_right = 102.293
+margin_bottom = 73.129
+theme = SubResource( 2 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ChruchTEXT" parent="Camera2D/CanvasLayer" instance=ExtResource( 14 )]
+margin_left = 40.0
+margin_top = 126.0
+margin_right = 430.0
+margin_bottom = 156.0
+text = ""
+
+[node name="key" type="Sprite" parent="Camera2D/CanvasLayer"]
+position = Vector2( 63.5502, -117.541 )
+scale = Vector2( 0.170345, 0.170345 )
+texture = ExtResource( 9 )
+
+[node name="Legs" type="CollisionShape2D" parent="."]
+position = Vector2( 46.4941, 19.2622 )
+shape = SubResource( 4 )
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2( 48.5188, -15.3484 )
+shape = SubResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/platformfall = SubResource( 6 )
+anims/slashbox = SubResource( 7 )
+
+[node name="AnimatedSprite" parent="." instance=ExtResource( 1 )]
+position = Vector2( -49.5455, -69.6619 )
+scale = Vector2( 0.321988, 0.321988 )
+animation = "Death"
+frame = 0
+playing = false
+script = ExtResource( 3 )
+
+[node name="swordhit" type="Area2D" parent="AnimatedSprite"]
+position = Vector2( 231.408, 323.779 )
+scale = Vector2( 5.68654, 5.68654 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite/swordhit"]
+position = Vector2( 43.6449, -27.2015 )
+shape = SubResource( 8 )
+disabled = true
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="AnimatedSprite"]
+anims/crouchmove = SubResource( 9 )
+anims/idle = SubResource( 10 )
+anims/walking = SubResource( 11 )
+
+[node name="Floating_Text" parent="." instance=ExtResource( 10 )]
+position = Vector2( 72.6621, -78.4244 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Dialogue" type="Area2D" parent="." groups=[
+"Player",
+]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dialogue"]
+position = Vector2( 92.7134, -21.6142 )
+shape = SubResource( 12 )
+
+[node name="RoomDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomDetector"]
+position = Vector2( 55.382, -15.3035 )
+shape = SubResource( 14 )
+[connection signal="player_stats_changed" from="." to="." method="value_changed"]
+[connection signal="body_entered" from="AnimatedSprite/swordhit" to="." method="_on_swordhit_body_entered"]
+[connection signal="area_entered" from="RoomDetector" to="." method="_on_RoomDetector_area_entered"]
+
+[editable path="AnimatedSprite"]

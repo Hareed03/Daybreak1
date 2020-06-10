@@ -1,0 +1,153 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://pixelmix.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Sprite11-0004.png" type="Texture" id=2]
+[ext_resource path="res://Options.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[node name="Options" type="Control"]
+margin_left = 184.0
+margin_top = 64.0
+margin_right = 224.0
+margin_bottom = 104.0
+theme = SubResource( 2 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+margin_right = 656.0
+margin_bottom = 408.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 16.4
+anchor_bottom = 10.2
+margin_left = 40.0
+margin_top = 35.0
+margin_right = -40.0
+margin_bottom = -32.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Column1" type="VBoxContainer" parent="HBoxContainer"]
+margin_right = 189.0
+margin_bottom = 341.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/Column1"]
+margin_right = 189.0
+margin_bottom = 35.0
+text = "Experience Bar
+Settings"
+align = 1
+valign = 1
+
+[node name="HSlider" type="HSlider" parent="HBoxContainer/Column1"]
+margin_top = 39.0
+margin_right = 189.0
+margin_bottom = 55.0
+step = 3.0
+tick_count = 2
+
+[node name="Label2" type="Label" parent="HBoxContainer/Column1"]
+margin_top = 59.0
+margin_right = 189.0
+margin_bottom = 75.0
+text = "Current:"
+
+[node name="column2" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 193.0
+margin_right = 382.0
+margin_bottom = 341.0
+size_flags_horizontal = 3
+
+[node name="Label4" type="Label" parent="HBoxContainer/column2"]
+margin_right = 189.0
+margin_bottom = 54.0
+text = "Sound Settings
+
+"
+align = 1
+valign = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/column2"]
+margin_top = 58.0
+margin_right = 189.0
+margin_bottom = 74.0
+text = "Master Volume"
+
+[node name="HSlider" type="HSlider" parent="HBoxContainer/column2"]
+margin_top = 78.0
+margin_right = 189.0
+margin_bottom = 94.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="HBoxContainer/column2"]
+margin_top = 98.0
+margin_right = 189.0
+margin_bottom = 114.0
+text = "Music Volume"
+
+[node name="HSlider2" type="HSlider" parent="HBoxContainer/column2"]
+margin_top = 118.0
+margin_right = 189.0
+margin_bottom = 134.0
+max_value = 2.0
+tick_count = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="HBoxContainer/column2"]
+margin_top = 138.0
+margin_right = 189.0
+margin_bottom = 154.0
+text = "SFX Volume"
+
+[node name="HSlider3" type="HSlider" parent="HBoxContainer/column2"]
+margin_top = 158.0
+margin_right = 189.0
+margin_bottom = 174.0
+
+[node name="column3" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 386.0
+margin_right = 576.0
+margin_bottom = 341.0
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="Exit" type="TextureButton" parent="HBoxContainer/column3"]
+margin_top = 311.0
+margin_right = 190.0
+margin_bottom = 341.0
+rect_min_size = Vector2( 150, 30 )
+texture_normal = ExtResource( 2 )
+expand = true
+
+[node name="Label" type="Label" parent="HBoxContainer/column3/Exit"]
+anchor_right = 1.0
+anchor_bottom = 1.1
+margin_left = -2.0
+margin_top = 1.0
+margin_right = -2.0
+margin_bottom = 0.999996
+text = "Exit"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="HBoxContainer/column3/Exit" to="." method="_on_Exit_pressed"]

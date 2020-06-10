@@ -1,0 +1,153 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://5x5_pixel.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Control.gd" type="Script" id=2]
+
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 0, 0, 0, 1, 0.153107, 0.467528, 0.675781, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 2
+emission_box_extents = Vector3( 600, 600, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, 98, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 5.0
+color_ramp = SubResource( 2 )
+hue_variation = 0.01
+hue_variation_random = 0.05
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=5]
+default_font = SubResource( 4 )
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=7]
+default_font = SubResource( 6 )
+
+[sub_resource type="DynamicFont" id=8]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=9]
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=10]
+default_font = SubResource( 9 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+
+[sub_resource type="DynamicFontData" id=12]
+font_path = "res://5x5_pixel.ttf"
+
+[sub_resource type="DynamicFont" id=13]
+font_data = SubResource( 12 )
+
+[sub_resource type="StyleBoxFlat" id=14]
+
+[sub_resource type="DynamicFontData" id=15]
+font_path = "res://5x5_pixel.ttf"
+
+[sub_resource type="DynamicFont" id=16]
+font_data = SubResource( 15 )
+
+[node name="StartMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 21.9998
+margin_top = -9.99992
+margin_right = 21.9999
+margin_bottom = -9.99994
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="ColorRect" parent="."]
+show_behind_parent = true
+margin_left = -145.136
+margin_top = 1.40826
+margin_right = 1146.86
+margin_bottom = 637.408
+color = Color( 0.12549, 0.113725, 0.113725, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Rain" type="Particles2D" parent="."]
+show_behind_parent = true
+position = Vector2( 163.243, 88.7814 )
+amount = 64
+lifetime = 2.0
+speed_scale = 3.0
+fixed_fps = 60
+process_material = SubResource( 3 )
+
+[node name="Company" type="Label" parent="."]
+margin_left = 10.0
+margin_top = 550.0
+margin_right = 191.0
+margin_bottom = 606.0
+rect_scale = Vector2( 1.25, 1.25 )
+theme = SubResource( 5 )
+text = "Henk    LTD."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_left = -507.381
+margin_top = -302.615
+margin_right = 513.619
+margin_bottom = 296.385
+rect_scale = Vector2( 2, 2 )
+theme = SubResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="buttons" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 395.0
+margin_top = 274.0
+margin_right = 625.0
+margin_bottom = 324.0
+alignment = 1
+
+[node name="TITLE" type="Label" parent="CenterContainer/buttons"]
+margin_right = 230.0
+margin_bottom = 10.0
+custom_fonts/font = SubResource( 8 )
+text = "Daybreak: Lunacy of Man"
+align = 1
+
+[node name="NewGame" type="Button" parent="CenterContainer/buttons"]
+margin_top = 14.0
+margin_right = 230.0
+margin_bottom = 30.0
+theme = SubResource( 10 )
+custom_styles/hover = SubResource( 11 )
+custom_fonts/font = SubResource( 13 )
+text = "Start Game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuitGameButton" type="Button" parent="CenterContainer/buttons"]
+margin_top = 34.0
+margin_right = 230.0
+margin_bottom = 50.0
+custom_styles/hover = SubResource( 14 )
+custom_fonts/font = SubResource( 16 )
+text = "Quit Game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="CenterContainer/buttons/NewGame" to="." method="_on_NewGame_pressed"]
+[connection signal="pressed" from="CenterContainer/buttons/QuitGameButton" to="." method="_on_QuitGameButton_pressed"]
