@@ -43,6 +43,7 @@ func CloseOptions():
 
 
 func _on_Exit_pressed():
+	get_tree().paused = false
 	get_node("GameMenu").hide()
 
 

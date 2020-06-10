@@ -1178,6 +1178,7 @@ position = Vector2( 872, 528 )
 scale = Vector2( 0.2625, 0.2625 )
 frames = SubResource( 46 )
 animation = "ghost"
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NPCS/Ghost"]
@@ -1198,6 +1199,9 @@ shape = SubResource( 49 )
 [node name="Control" parent="NPCS/Ghost/CanvasLayer" instance=ExtResource( 24 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
+
+[node name="AudioStreamPlayer2D" parent="NPCS/Ghost/CanvasLayer/Control" index="3"]
+volume_db = -14.29
 
 [node name="Label" type="Label" parent="NPCS/Ghost"]
 margin_left = 816.0

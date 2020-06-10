@@ -33,7 +33,7 @@ func _load_dialog():
 func _on_Timer_timeout():
 	if text_limit > $TextureRect/RichTextLabel.visible_characters:
 		$TextureRect/RichTextLabel.visible_characters += 1
-		$AudioStreamPlayer2D.volume_db = rand_range(-22.0, -12.0)
+		$AudioStreamPlayer2D.volume_db = rand_range(-42.0, -23.0)
 		$AudioStreamPlayer2D.pitch_scale = rand_range(0.95, 1.05)
 		$AudioStreamPlayer2D.play()
 	else:

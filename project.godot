@@ -81,6 +81,11 @@ boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 0 )
 config/icon="res://Sprite-0004.png"
 
+[autoload]
+
+UserData="*res://addons/github-integration/scripts/user_data.gd"
+IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
+
 [display]
 
 window/size/height=512
@@ -90,7 +95,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "EXP-System-Dialog", "GodotTIE", "SMRT", "godot-git-control.funabab", "sprite_trail" )
+enabled=PoolStringArray( "EXP-System-Dialog", "GodotTIE", "SMRT", "github-integration", "godot-git-control.funabab", "sprite_trail" )
 
 [gdnative]
 
